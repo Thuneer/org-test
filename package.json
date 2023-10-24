@@ -1,0 +1,33 @@
+{
+  "name": "org-test-2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@digdir/design-system-react": "^0.33.0",
+    "@digdir/design-system-tokens": "^0.8.1",
+    "@navikt/aksel-icons": "^5.7.6",
+    "@uiw/react-textarea-code-editor": "^2.1.9",
+    "bootstrap": "^5.3.2",
+    "classnames": "^2.3.2",
+    "next": "13.5.6",
+    "next-remove-imports": "^1.0.12",
+    "react": "^18",
+    "react-bootstrap": "^2.9.1",
+    "react-dom": "^18",
+    "rehype": "^13.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "13.5.6",
+    "typescript": "^5"
+  }
+}

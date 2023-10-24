@@ -1,0 +1,12 @@
+body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--fds-semantic-background-subtle);
+  color: var(--fds-semantic-text-neutral-default);
+}
+
+.container {
+  max-width: 2000px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
