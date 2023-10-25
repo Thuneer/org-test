@@ -29,31 +29,45 @@
 }
 
 .row {
-  margin-bottom: 44px;
+  padding-bottom: 44px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 0px;
   position: relative;
 }
 
-.rowLine {
+.rowLine,
+.boxLine {
   position: absolute;
+  background-color: #1e2b3c;
 }
 
 .row-4 .rowLine {
   height: 1px;
-  width: calc(100% - 327px);
-  left: 164px;
-  background-color: rgb(151, 151, 151);
+  width: calc(100% - (100% / 4));
+  left: calc(12.5%);
   margin-top: -30px;
+}
+
+.row-1 .rowLine {
+  width: 1px;
+  height: 100%;
+  left: 50%;
+}
+
+.row-2 .rowLine {
+  width: 1px;
+  height: 100%;
+  left: 50%;
+}
+
+.row:nth-child() .rowLine {
+  background-color: red;
 }
 
 .row-4 .boxLine {
   height: 30px;
   width: 1px;
-  background-color: rgb(151, 151, 151);
-  display: block;
-  position: absolute;
   top: -30px;
   left: 50%;
 }
@@ -63,9 +77,6 @@
   height: 1px;
   width: 50%;
   top: 35px;
-  background-color: rgb(151, 151, 151);
-  display: block;
-  position: absolute;
 }
 
 .row-2 .col-0 .boxLine {
@@ -92,7 +103,7 @@
   justify-content: center;
   border-radius: 4px;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   text-decoration: none;
   line-height: 1.4em;
   position: relative;
@@ -102,6 +113,14 @@
 .underBox:hover {
   text-decoration: underline;
   text-underline-offset: 5px;
+}
+
+.box:focus,
+.underBox:focus {
+  outline-offset: 5px;
+  outline-offset: 3px;
+  outline: 3px solid rgb(255, 238, 0);
+  box-shadow: 0 0 0 3px black;
 }
 
 .box {
@@ -116,10 +135,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .boxWrapper {
   position: relative;
+}
+
+.boxWrapper > div:hover {
+  text-decoration: none;
 }
 
 .boxRight {
@@ -127,7 +151,7 @@
 }
 
 .underBox {
-  background-color: rgb(224, 224, 224);
+  background-color: rgb(216, 216, 216);
   color: black;
 }
 

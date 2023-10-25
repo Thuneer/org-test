@@ -25,7 +25,6 @@ export default function Home() {
     {
       "title": "Direktør", 
       "id": "dir", 
-      "url": "https://vg.no",
       "backgroundColor": "#0062BA"
     },
     {
@@ -192,6 +191,7 @@ export default function Home() {
     layout.map((item: any, index: number) => {
       let row: any = {};
       row.cols = [];
+      row.totalRows = layout.lenght;
       item.cols.map((col: any, colIndex: number) => {
         row.cols[colIndex] = [];
         col.col.map((col2: any, colIndex2: number) => {
@@ -222,8 +222,20 @@ export default function Home() {
 
   const createLineStyles = (rowItem: any, colItem: any, boxItem: any) => {
     return {
-      backgroundColor: "black",
+      backgroundColor: "#1e2b3c",
     };
+  };
+
+  const createMain = (rowItem: any) => {
+    if (rowItem.colLength === 51) {
+      return {
+        height: "400px",
+      };
+    }
+  };
+
+  const Box = ({ link, children, ...props }) => {
+    return React.createElement(link ? "a" : "div", props, children);
   };
 
   return (
@@ -275,7 +287,10 @@ export default function Home() {
                     classes["row-" + rowItem.colLength]
                   )}
                 >
-                  <div className={cn(classes.rowLine)} />
+                  <div
+                    className={cn(classes.rowLine)}
+                    style={createMain(rowItem)}
+                  />
                   {rowItem.cols.map((colItem: any, colIndex: number) => (
                     <div
                       key={colIndex}
@@ -288,9 +303,10 @@ export default function Home() {
                             style={createLineStyles(rowItem, colItem, boxItem)}
                           />
                           <div className={classes.boxWrapper}>
-                            <a
+                            <Box
+                              link={boxItem.url}
                               href={boxItem.url}
-                              target="blank"
+                              target={boxItem.url ? "blank" : ""}
                               className={cn(classes.box, {
                                 [classes.boxRight]: boxItem.offset,
                               })}
@@ -299,7 +315,7 @@ export default function Home() {
                               }}
                             >
                               {boxItem.title}
-                            </a>
+                            </Box>
                           </div>
                           {boxItem.items.length > 0 && boxItem.parent && (
                             <>
