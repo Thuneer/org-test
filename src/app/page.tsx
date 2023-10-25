@@ -220,6 +220,12 @@ export default function Home() {
     test();
   }, []);
 
+  const createLineStyles = (rowItem: any, colItem: any, boxItem: any) => {
+    return {
+      backgroundColor: "black",
+    };
+  };
+
   return (
     <main className={classes.main}>
       <Container>
@@ -237,7 +243,6 @@ export default function Home() {
                   padding={10}
                   minHeight={500}
                   onChange={(e) => {
-                    console.log(e.target.value);
                     setCode(e.target.value);
                   }}
                   style={{
@@ -270,27 +275,32 @@ export default function Home() {
                     classes["row-" + rowItem.colLength]
                   )}
                 >
+                  <div className={cn(classes.rowLine)} />
                   {rowItem.cols.map((colItem: any, colIndex: number) => (
                     <div
                       key={colIndex}
                       className={cn(classes.col, classes["col-" + colIndex])}
                     >
                       {colItem.map((boxItem: any, boxIndex: number) => (
-                        <div key={boxIndex}>
-                          <a
-                            href={boxItem.url}
-                            target="blank"
-                            className={cn(
-                              classes.box,
-                              {
+                        <div key={boxIndex} className={classes.boxGroup}>
+                          <div
+                            className={cn(classes.boxLine)}
+                            style={createLineStyles(rowItem, colItem, boxItem)}
+                          />
+                          <div className={classes.boxWrapper}>
+                            <a
+                              href={boxItem.url}
+                              target="blank"
+                              className={cn(classes.box, {
                                 [classes.boxRight]: boxItem.offset,
-                              },
-                              classes["box-index-" + boxIndex]
-                            )}
-                            style={{ backgroundColor: boxItem.backgroundColor }}
-                          >
-                            {boxItem.title}
-                          </a>
+                              })}
+                              style={{
+                                backgroundColor: boxItem.backgroundColor,
+                              }}
+                            >
+                              {boxItem.title}
+                            </a>
+                          </div>
                           {boxItem.items.length > 0 && boxItem.parent && (
                             <>
                               {boxItem.items.map((item: any, index: number) => (

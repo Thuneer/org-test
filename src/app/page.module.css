@@ -36,41 +36,43 @@
   position: relative;
 }
 
-.row-4:before {
-  content: "";
-  height: 1px;
-  width: 100%;
-  background-color: rgb(151, 151, 151);
-  display: block;
+.rowLine {
   position: absolute;
+}
+
+.row-4 .rowLine {
+  height: 1px;
+  width: calc(100% - 327px);
+  left: 164px;
+  background-color: rgb(151, 151, 151);
   margin-top: -30px;
 }
 
-.row-4 .box:before {
-  content: "";
+.row-4 .boxLine {
   height: 30px;
   width: 1px;
   background-color: rgb(151, 151, 151);
   display: block;
   position: absolute;
   top: -30px;
+  left: 50%;
 }
 
-.row-2 .col-0 .box:before,
-.row-2 .col-1 .box:before {
-  content: "";
+.row-2 .col-0 .boxLine,
+.row-2 .col-1 .boxLine {
   height: 1px;
-  width: 160px;
+  width: 50%;
+  top: 35px;
   background-color: rgb(151, 151, 151);
   display: block;
   position: absolute;
 }
 
-.row-2 .col-0 .box:before {
-  right: -160px;
+.row-2 .col-0 .boxLine {
+  right: 0;
 }
-.row-2 .col-1 .box:before {
-  left: -160px;
+.row-2 .col-1 .boxLine {
+  left: 0;
 }
 
 .col {
@@ -107,6 +109,19 @@
   color: white;
 }
 
+.boxGroup {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.boxWrapper {
+  position: relative;
+}
+
 .boxRight {
   margin-right: -240px;
 }
@@ -123,5 +138,5 @@
 }
 
 .button {
-  margin-top: 16px;
+  margin-top: 20px;
 }
