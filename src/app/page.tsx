@@ -195,22 +195,24 @@ export default function Home() {
       item.cols.map((col: any, colIndex: number) => {
         row.cols[colIndex] = [];
         col.col.map((col2: any, colIndex2: number) => {
-          let aa = boxes.filter((box: any) => {
+          let currentBox = boxes.filter((box: any) => {
             return box.id === col2;
           });
 
-          if (aa.length > 0) {
-            aa = aa[0];
-            aa.items = boxes.filter((box2: any) => {
-              return aa.id === box2.parent;
+          if (currentBox.length > 0) {
+            currentBox = currentBox[0];
+            currentBox.items = boxes.filter((box2: any) => {
+              return currentBox.id === box2.parent;
             });
-            row.cols[colIndex].push(aa);
+
+            row.cols[colIndex].push(currentBox);
           }
         });
+        row.colLength = row.cols.length;
       });
       myItems.push(row);
     });
-
+    console.log(myItems);
     setItems(myItems);
   };
 
@@ -223,7 +225,7 @@ export default function Home() {
       <Container>
         <Row className="gx-4">
           <Col xl={12}>
-            <h1 className={classes.title}>Org Kart</h1>
+            <h1 className={classes.title}>Lag organisasjonsKart</h1>
           </Col>
           <Col xl={4}>
             <div className={classes.left}>
@@ -254,24 +256,37 @@ export default function Home() {
                   test();
                 }}
               >
-                Lag org kart
+                Generer org kart
               </Button>
             </div>
           </Col>
           <Col xl={8}>
             <div className={classes.output}>
               {items.map((rowItem: any, rowIndex: number) => (
-                <div key={rowIndex} className={classes.row}>
+                <div
+                  key={rowIndex}
+                  className={cn(
+                    classes.row,
+                    classes["row-" + rowItem.colLength]
+                  )}
+                >
                   {rowItem.cols.map((colItem: any, colIndex: number) => (
-                    <div key={colIndex} className={cn(classes.col)}>
+                    <div
+                      key={colIndex}
+                      className={cn(classes.col, classes["col-" + colIndex])}
+                    >
                       {colItem.map((boxItem: any, boxIndex: number) => (
                         <div key={boxIndex}>
                           <a
                             href={boxItem.url}
                             target="blank"
-                            className={cn(classes.box, {
-                              [classes.boxRight]: boxItem.offset,
-                            })}
+                            className={cn(
+                              classes.box,
+                              {
+                                [classes.boxRight]: boxItem.offset,
+                              },
+                              classes["box-index-" + boxIndex]
+                            )}
                             style={{ backgroundColor: boxItem.backgroundColor }}
                           >
                             {boxItem.title}

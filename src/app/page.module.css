@@ -33,6 +33,44 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 0px;
+  position: relative;
+}
+
+.row-4:before {
+  content: "";
+  height: 1px;
+  width: 100%;
+  background-color: rgb(151, 151, 151);
+  display: block;
+  position: absolute;
+  margin-top: -30px;
+}
+
+.row-4 .box:before {
+  content: "";
+  height: 30px;
+  width: 1px;
+  background-color: rgb(151, 151, 151);
+  display: block;
+  position: absolute;
+  top: -30px;
+}
+
+.row-2 .col-0 .box:before,
+.row-2 .col-1 .box:before {
+  content: "";
+  height: 1px;
+  width: 160px;
+  background-color: rgb(151, 151, 151);
+  display: block;
+  position: absolute;
+}
+
+.row-2 .col-0 .box:before {
+  right: -160px;
+}
+.row-2 .col-1 .box:before {
+  left: -160px;
 }
 
 .col {
@@ -55,6 +93,7 @@
   margin-bottom: 10px;
   text-decoration: none;
   line-height: 1.4em;
+  position: relative;
 }
 
 .box:hover,
