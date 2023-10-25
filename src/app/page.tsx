@@ -249,7 +249,7 @@ export default function Home() {
 
   return (
     <main className={classes.main}>
-      <Container>
+      <Container fluid>
         <Row className="gx-4">
           <Col xl={12}>
             <h1 className={classes.title}>Lag organisasjonsKart</h1>
