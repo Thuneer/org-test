@@ -234,7 +234,16 @@ export default function Home() {
     }
   };
 
-  const Box = ({ link, children, ...props }) => {
+  type BoxProps = {
+    link: string;
+    children: React.ReactNode;
+    href: string;
+    target: string;
+    className: string;
+    style: any;
+  };
+
+  const Box = ({ link, children, ...props }: BoxProps) => {
     return React.createElement(link ? "a" : "div", props, children);
   };
 
